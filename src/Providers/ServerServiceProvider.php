@@ -12,6 +12,8 @@ use ReactPHPLaravel\Middleware\TransformRequest;
 use ReactPHPLaravel\Utils\IllumitateRequestBuilder;
 use ReactPHPLaravel\Utils\ReactPHPResponseBuilder;
 use ReactPHPLaravel\Middleware\FiberHandler;
+use function React\Async\async;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ServerServiceProvider extends ServiceProvider
 {
@@ -64,10 +66,17 @@ class ServerServiceProvider extends ServiceProvider
             return new HttpServer(
                 new FiberHandler(),
                 function (ServerRequestInterface $request) use ($app) {
-                    $request = IllumitateRequestBuilder::make($request);
-                    $responseLaravel = $app['reactphp.laravel']->handle($request);
-                    $response = ReactPHPResponseBuilder::make($responseLaravel);
-                    return $response;
+                    return async(function () use ($app, $request) {
+                        $request = IllumitateRequestBuilder::make($request);
+                        $responseLaravel = $app['reactphp.laravel']->handle($request);
+
+                        if (class_exists(StreamedResponse::class) && $responseLaravel instanceof StreamedResponse) {
+                            return $responseLaravel->getCallback()();
+                        }
+                        
+                        $response = ReactPHPResponseBuilder::make($responseLaravel);
+                        return $response;
+                    })();
                 }
             );
         });
