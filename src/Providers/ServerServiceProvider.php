@@ -4,7 +4,7 @@ namespace ReactPHPLaravel\Providers;
 use Illuminate\Support\ServiceProvider;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Http\Response;
-use React\Http\Server;
+use React\Http\HttpServer;
 use ReactPHPLaravel\Commands\HttpServerCommand;
 use ReactPHPLaravel\Http\LaravelManager;
 use ReactPHPLaravel\Http\ServerManager;
@@ -39,7 +39,7 @@ class ServerServiceProvider extends ServiceProvider
     protected function registerLoop()
     {
         $this->app->singleton('React\EventLoop\LoopInterface', function ($app) {
-            return \React\EventLoop\Factory::create();
+            return \React\EventLoop\Loop::get();
         });
 
         $this->app->alias('React\EventLoop\LoopInterface', 'reactphp.loop');
@@ -60,7 +60,7 @@ class ServerServiceProvider extends ServiceProvider
     protected function registerServer()
     {
         $this->app->singleton('reactphp.server', function ($app) {
-            return new Server([
+            return new HttpServer([
                 function (ServerRequestInterface $request) use ($app) {
                     $request = IllumitateRequestBuilder::make($request);
                     $responseLaravel = $app['reactphp.laravel']->handle($request);

@@ -1,10 +1,10 @@
 {
-    "name": "danielmadu/laravel-reactphp",
+    "name": "wpjscc/laravel-reactphp",
     "description": "A package to use Laravel with ReactPHP",
     "type": "library",
     "require": {
         "react/event-loop": "^1.0",
-        "react/http": "^0.8.3"
+        "react/http": "^1.9"
     },
     "license": "MIT",
     "authors": [
