@@ -50,7 +50,7 @@ class ServerServiceProvider extends ServiceProvider
 
     protected function registerSocket()
     {
-        $this->app->singleton('React\Socket\Server', function ($app) {
+        $this->app->singleton('React\Socket\SocketServer', function ($app) {
             return new \React\Socket\SocketServer(
                 "{$app['config']->get('reactphp.server.host')}:{$app['config']->get('reactphp.server.port')}",
                 [],
