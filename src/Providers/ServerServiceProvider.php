@@ -51,8 +51,9 @@ class ServerServiceProvider extends ServiceProvider
     protected function registerSocket()
     {
         $this->app->singleton('React\Socket\Server', function ($app) {
-            return new \React\Socket\Server(
+            return new \React\Socket\SocketServer(
                 "{$app['config']->get('reactphp.server.host')}:{$app['config']->get('reactphp.server.port')}",
+                [],
                 $app->make('reactphp.loop')
             );
         });
@@ -73,7 +74,7 @@ class ServerServiceProvider extends ServiceProvider
                         if (class_exists(StreamedResponse::class) && $responseLaravel instanceof StreamedResponse) {
                             return $responseLaravel->getCallback()();
                         }
-                        
+
                         $response = ReactPHPResponseBuilder::make($responseLaravel);
                         return $response;
                     })();
