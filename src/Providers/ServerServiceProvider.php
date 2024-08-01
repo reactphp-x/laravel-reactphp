@@ -60,14 +60,14 @@ class ServerServiceProvider extends ServiceProvider
     protected function registerServer()
     {
         $this->app->singleton('reactphp.server', function ($app) {
-            return new HttpServer([
+            return new HttpServer(
                 function (ServerRequestInterface $request) use ($app) {
                     $request = IllumitateRequestBuilder::make($request);
                     $responseLaravel = $app['reactphp.laravel']->handle($request);
                     $response = ReactPHPResponseBuilder::make($responseLaravel);
                     return $response;
                 }
-            ]);
+            );
         });
     }
 

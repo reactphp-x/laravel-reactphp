@@ -4,7 +4,7 @@ namespace ReactPHPLaravel\Utils;
 
 
 use Illuminate\Http\Response;
-use React\Http\Response as ReactResponse;
+use React\Http\Message\Response as ReactResponse;
 
 class ReactPHPResponseBuilder
 {
