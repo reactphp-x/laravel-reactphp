@@ -58,7 +58,7 @@ class ServerServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->alias('React\Socket\Server', 'reactphp.socket');
+        $this->app->alias('React\Socket\SocketServer', 'reactphp.socket');
     }
 
     protected function registerServer()
