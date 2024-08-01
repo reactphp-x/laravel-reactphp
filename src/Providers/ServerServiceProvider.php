@@ -11,6 +11,7 @@ use ReactPHPLaravel\Http\ServerManager;
 use ReactPHPLaravel\Middleware\TransformRequest;
 use ReactPHPLaravel\Utils\IllumitateRequestBuilder;
 use ReactPHPLaravel\Utils\ReactPHPResponseBuilder;
+use ReactPHPLaravel\Middleware\FiberHandler;
 
 class ServerServiceProvider extends ServiceProvider
 {
@@ -61,6 +62,7 @@ class ServerServiceProvider extends ServiceProvider
     {
         $this->app->singleton('reactphp.server', function ($app) {
             return new HttpServer(
+                new FiberHandler(),
                 function (ServerRequestInterface $request) use ($app) {
                     $request = IllumitateRequestBuilder::make($request);
                     $responseLaravel = $app['reactphp.laravel']->handle($request);
