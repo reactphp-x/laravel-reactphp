@@ -4,7 +4,6 @@
     "type": "library",
     "require": {
         "react/event-loop": "^1.0",
-        "react/http": "^1.9",
         "react/async": "^4.3",
         "reactphp-framework/framework-x": "^0.16.0"
     },
