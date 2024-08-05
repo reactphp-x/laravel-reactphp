@@ -21,36 +21,17 @@ class ServerManager
 
     protected function initialize()
     {
-        $this->bindLaravel();
         $this->bindListeners();
     }
 
     protected function bindListeners()
     {
-        $this->app['reactphp.server']->on('error', function (\Throwable $e) {
-            echo  'Error: ' . $e->getMessage() . PHP_EOL;
-            echo  'File: ' . $e->getFile() . PHP_EOL;
-            echo  'Line: ' . $e->getLine() . PHP_EOL;
-//            echo  'Stacktrace: ' . $e->getTraceAsString() . PHP_EOL;
-        });
-    }
-
-    protected function onRequest(ServerRequestInterface $request)
-    {
-        $request = IllumitateRequestBuilder::make($request);
-        $responseLaravel = $this->app['reactphp.laravel']->handle($request);
-        $response = ReactPHPResponseBuilder::make($responseLaravel);
-
-        return $response;
-    }
-
-    protected function bindLaravel()
-    {
-        $this->app->singleton(LaravelManager::class, function ($app) {
-            return new LaravelManager($app);
-        });
-
-        $this->app->alias(LaravelManager::class, 'reactphp.laravel');
+//         $this->app['reactphp.server']->on('error', function (\Throwable $e) {
+//             echo  'Error: ' . $e->getMessage() . PHP_EOL;
+//             echo  'File: ' . $e->getFile() . PHP_EOL;
+//             echo  'Line: ' . $e->getLine() . PHP_EOL;
+// //            echo  'Stacktrace: ' . $e->getTraceAsString() . PHP_EOL;
+//         });
     }
 
     protected function getPidFile()
@@ -108,8 +89,10 @@ class ServerManager
     {
         $this->createPidFile();
         $writable = new WritableResourceStream(STDOUT, $this->app['reactphp.loop']);
-        $writable->write("\nListening on {$this->app['reactphp.socket']->getAddress()}\n");
-        $this->app['reactphp.server']->listen($this->app['reactphp.socket']);
-        $this->app['reactphp.loop']->run();
+        $host = $this->app['config']->get('reactphp.server.host');
+        $port = $this->app['config']->get('reactphp.server.port');
+        $writable->write("\nListening on $host:$port\n");
+        putenv("X_LISTEN=$host:$port");
+        $this->app['reactphp.server']->run();
     }
 }

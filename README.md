@@ -6,7 +6,7 @@ A package to use Laravel with ReactPHP
 ## Install
 
 ```shell
-composer require danielmadu/laravel-reactphp
+composer require wpjscc/laravel-reactphp
 ```
 
 ## Run
