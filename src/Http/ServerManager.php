@@ -1,12 +1,12 @@
 <?php
 
-namespace ReactPHPLaravel\Http;
+namespace Reactphp\Framework\LaravelReactphp\Http;
 
 
 use Psr\Http\Message\ServerRequestInterface;
 use React\Stream\WritableResourceStream;
-use ReactPHPLaravel\Utils\IllumitateRequestBuilder;
-use ReactPHPLaravel\Utils\ReactPHPResponseBuilder;
+use Reactphp\Framework\LaravelReactphp\Utils\IllumitateRequestBuilder;
+use Reactphp\Framework\LaravelReactphp\Utils\ReactPHPResponseBuilder;
 use Symfony\Component\Process\Process;
 
 class ServerManager
@@ -89,10 +89,7 @@ class ServerManager
     {
         $this->createPidFile();
         $writable = new WritableResourceStream(STDOUT, $this->app['reactphp.loop']);
-        $host = $this->app['config']->get('reactphp.server.host');
-        $port = $this->app['config']->get('reactphp.server.port');
-        $writable->write("\nListening on $host:$port\n");
-        putenv("X_LISTEN=$host:$port");
+        $writable->write("\nListening on ".env('X_LISTEN')." \n");
         $this->app['reactphp.server']->run();
     }
 }

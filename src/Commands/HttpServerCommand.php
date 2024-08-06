@@ -1,9 +1,9 @@
 <?php
 
-namespace ReactPHPLaravel\Commands;
+namespace Reactphp\Framework\LaravelReactphp\Commands;
 
 use Illuminate\Console\Command;
-use ReactPHPLaravel\Http\ServerManager;
+use Reactphp\Framework\LaravelReactphp\Http\ServerManager;
 
 class HttpServerCommand extends Command
 {

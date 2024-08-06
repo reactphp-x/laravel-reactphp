@@ -1,5 +1,5 @@
 {
-    "name": "wpjscc/laravel-reactphp",
+    "name": "reactphp-framework/laravel-reactphp",
     "description": "A package to use Laravel with ReactPHP",
     "type": "library",
     "require": {
@@ -10,20 +10,15 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Daniel Madureira Batista",
-            "email": "daniel.madureira.batista@gmail.com"
+            "name": "wpjscc",
+            "email": "wpjscc@gmail.com"
         }
     ],
     "extra": {
-        "laravel": {
-            "providers": [
-                "ReactPHPLaravel\\Providers\\ServerServiceProvider"
-            ]
-        }
     },
     "autoload": {
         "psr-4": {
-            "ReactPHPLaravel\\": "src/"
+            "Reactphp\\Framework\\LaravelReactphp": "src/"
         }
     }
 }

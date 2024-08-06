@@ -1,9 +1,9 @@
 <?php
-namespace ReactPHPLaravel\Providers;
+namespace Reactphp\Framework\LaravelReactphp\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use ReactPHPLaravel\Commands\HttpServerCommand;
-use ReactPHPLaravel\Http\ServerManager;
+use Reactphp\Framework\LaravelReactphp\Commands\HttpServerCommand;
+use Reactphp\Framework\LaravelReactphp\Http\ServerManager;
 use FrameworkX\App;
 
 class ServerServiceProvider extends ServiceProvider
@@ -21,6 +21,19 @@ class ServerServiceProvider extends ServiceProvider
         $this->registerServer();
         $this->registerManager();
         $this->registerCommands();
+    }
+
+    public function boot()
+    {
+       $this->requireRoute();
+    }
+
+    protected function requireRoute()
+    {
+        $routeFile = $this->app['config']->get('reactphp.server.route_file');
+        if (file_exists($routeFile)) {
+            require $routeFile;
+        }
     }
 
     protected function mergeConfigs()
