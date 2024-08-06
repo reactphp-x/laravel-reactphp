@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Reactphp\\Framework\\LaravelReactphp": "src/"
+            "Reactphp\\Framework\\LaravelReactphp\\": "src/"
         }
     }
 }
