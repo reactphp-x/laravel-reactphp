@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Facade;
  * @method void static head(string $route, $handler, ...$handlers)
  * @method void static any(string $route, $handler, ...$handlers)
  * @method void static addGroup(string $prefix, array $handlers, callable $callback)
+ * @method void static group(string $prefix, array $handlers, callable $callback)
  * @method void static map(array $methods, string $route, $handler, ...$handlers)
  */
 
