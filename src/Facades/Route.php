@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Facade;
  * @method void static map(array $methods, string $route, $handler, ...$handlers)
  */
 
-class ReactServer extends Facade
+class Route extends Facade
 {
     protected static function getFacadeAccessor()
     {
