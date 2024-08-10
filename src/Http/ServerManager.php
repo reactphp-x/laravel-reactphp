@@ -1,12 +1,12 @@
 <?php
 
-namespace Reactphp\Framework\LaravelReactphp\Http;
+namespace ReactphpX\LaravelReactphp\Http;
 
 
 use Psr\Http\Message\ServerRequestInterface;
 use React\Stream\WritableResourceStream;
-use Reactphp\Framework\LaravelReactphp\Utils\IllumitateRequestBuilder;
-use Reactphp\Framework\LaravelReactphp\Utils\ReactPHPResponseBuilder;
+use ReactphpX\LaravelReactphp\Utils\IllumitateRequestBuilder;
+use ReactphpX\LaravelReactphp\Utils\ReactPHPResponseBuilder;
 use Symfony\Component\Process\Process;
 
 class ServerManager

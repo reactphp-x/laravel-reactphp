@@ -1,11 +1,11 @@
 {
-    "name": "reactphp-framework/laravel-reactphp",
+    "name": "reactphp-x/laravel-reactphp",
     "description": "A package to use Laravel with ReactPHP",
     "type": "library",
     "require": {
         "react/event-loop": "^1.0",
         "react/async": "^4.3",
-        "reactphp-framework/framework-x": "^0.16.1"
+        "reactphp-x/framework-x": "^0.16.1"
     },
     "license": "MIT",
     "authors": [
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Reactphp\\Framework\\LaravelReactphp\\": "src/"
+            "ReactphpX\\LaravelReactphp\\": "src/"
         }
     }
 }

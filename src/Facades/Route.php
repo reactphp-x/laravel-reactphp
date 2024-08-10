@@ -1,6 +1,6 @@
 <?php
 
-namespace Reactphp\Framework\LaravelReactphp\Facades;
+namespace ReactphpX\LaravelReactphp\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

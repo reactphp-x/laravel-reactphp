@@ -1,4 +1,4 @@
-# reactphp-framework/laravel-reactphp
+# reactphp-x/laravel-reactphp
 A package to use Laravel with ReactPHP ref https://github.com/danielmadu/laravel-reactphp
 
 # How to use
@@ -7,7 +7,7 @@ A package to use Laravel with ReactPHP ref https://github.com/danielmadu/laravel
 
 
 ```shell
-composer require reactphp-framework/laravel-reactphp -vvv
+composer require reactphp-x/laravel-reactphp -vvv
 ```
 
 

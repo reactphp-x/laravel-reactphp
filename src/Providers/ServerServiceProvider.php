@@ -1,9 +1,9 @@
 <?php
-namespace Reactphp\Framework\LaravelReactphp\Providers;
+namespace ReactphpX\LaravelReactphp\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Reactphp\Framework\LaravelReactphp\Commands\HttpServerCommand;
-use Reactphp\Framework\LaravelReactphp\Http\ServerManager;
+use ReactphpX\LaravelReactphp\Commands\HttpServerCommand;
+use ReactphpX\LaravelReactphp\Http\ServerManager;
 use FrameworkX\App;
 
 class ServerServiceProvider extends ServiceProvider
