@@ -5,7 +5,8 @@
     "require": {
         "react/event-loop": "^1.0",
         "react/async": "^4.3",
-        "reactphp-x/framework-x": "^0.16.1"
+        "clue/framework-x": "^0.16",
+        "reactphp-x/route": "^1.0"
     },
     "license": "MIT",
     "authors": [

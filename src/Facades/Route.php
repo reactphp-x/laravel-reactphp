@@ -23,6 +23,6 @@ class Route extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'reactphp.server';
+        return 'reactphp.route';
     }
 }

@@ -18,6 +18,7 @@ class ServerServiceProvider extends ServiceProvider
     {
         $this->mergeConfigs();
         $this->registerLoop();
+        $this->registerRoute();
         $this->registerServer();
         $this->registerManager();
         $this->registerCommands();
@@ -50,10 +51,16 @@ class ServerServiceProvider extends ServiceProvider
         $this->app->alias('React\EventLoop\LoopInterface', 'reactphp.loop');
     }
 
+    protected function registerRoute()
+    {
+        $this->app->singleton('reactphp.route', function ($app) {
+            return new \ReactphpX\Route\Route($app);
+        });
+    }
     protected function registerServer()
     {
         $this->app->singleton('reactphp.server', function ($app) {
-            return new App(new \FrameworkX\Container($app), ...(array_filter($app['config']->get('reactphp.middlewares', []))));
+            return new App(...(array_filter($app['config']->get('reactphp.middlewares', []))), $app->get('reactphp.route'));
         });
     }
 
