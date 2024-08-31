@@ -60,7 +60,7 @@ class ServerServiceProvider extends ServiceProvider
     protected function registerServer()
     {
         $this->app->singleton('reactphp.server', function ($app) {
-            return new App(new \FrameworkX\Container($app), ...(array_merge(array_filter($app['config']->get('reactphp.middlewares', [])), [$app->get('reactphp.route')])));
+            return new App(...array_merge(array_filter($app['config']->get('reactphp.middlewares', [])), [new \FrameworkX\Container($app), $app->get('reactphp.route')]));
         });
     }
 
